@@ -6,7 +6,6 @@
     $menu = require('../config/menu.php');
     $albums = Album::Best();
     $lastMessage = $query->last('users')->message??'';
-
     if (isPost() && cfsr()){
         $name = trim(htmlspecialchars($_POST['name']));
         $email = trim(htmlspecialchars($_POST['email']));
