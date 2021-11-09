@@ -1,11 +1,11 @@
-<article class="style1">
+<article class="style<?= $key ?>">
     <span class="image">
-        <img src="images/pic01.jpg" alt="" />
+        <img src="images/pic0<?= $key ?>.jpg" alt="" />
     </span>
-    <a href="votes.php">
-        <h2>Nom Album</h2>
+    <a href="votes.php?id=<?= $key ?>">
+        <h2><?= $album->getName() ?></h2>
         <div class="content">
-            <p>Grup Album<br/>Discografica</p>
+            <p><?= $album->getArtistName() ?><br/><?= $album->getCompany(); ?></p>
         </div>
     </a>
 </article>

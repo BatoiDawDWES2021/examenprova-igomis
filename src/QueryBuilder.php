@@ -38,6 +38,14 @@ class QueryBuilder
         return $stpdo->fetch(\PDO::FETCH_OBJ);
     }
 
+    public function findByEmail($table,$id){
+        $stpdo = $this->conn->prepare("SELECT * FROM {$table} WHERE `email` = :id ");
+        $stpdo->bindParam(":id",$id);
+        $this->execute($stpdo);
+
+        return $stpdo->fetch(\PDO::FETCH_OBJ);
+    }
+
     public function deleteById($table,$primaryKey,$id){
         $stpdo = $this->conn->prepare("DELETE FROM {$table} WHERE `$primaryKey` = :id ");
         $stpdo->bindParam(":id",$id);
@@ -49,6 +57,14 @@ class QueryBuilder
         $this->execute($stpdo);
 
         return $stpdo->fetchAll(\PDO::FETCH_OBJ);
+    }
+
+    public function selectUnique($table,$key,$value){
+        $stpdo = $this->conn->prepare("SELECT * FROM {$table} WHERE `$key` = :value ");
+        $stpdo->bindParam(":value",$value);
+        $this->execute($stpdo);
+
+        return $stpdo->fetch(\PDO::FETCH_OBJ);
     }
 
     public function insert($table,$parametres){
@@ -79,6 +95,10 @@ class QueryBuilder
     }
 
     public function last($table){
+        $stpdo = $this->conn->prepare("SELECT * FROM {$table} ORDER by id DESC LIMIT 1");
+        $this->execute($stpdo);
+
+        return $stpdo->fetch(\PDO::FETCH_OBJ);
         // Torna el ultim element d'una taula
     }
 

@@ -22,11 +22,15 @@ function loadView($vista,$params=[]){
     if (isPost()) {
         extract($_POST,EXTR_PREFIX_ALL,'old');
     }
-    require_once($_SERVER['DOCUMENT_ROOT'].'/../views/'."$vista.view.php");
+    require($_SERVER['DOCUMENT_ROOT'].'/../views/'."$vista.view.php");
+}
+
+function Auth(){
+    return isset($_SESSION['user']);
 }
 
 function loadTemplate($vista,$params=[]){
-    return loadView($vista,$params);
+    return loadView(str_replace('.','/',$vista),$params);
 }
 
 function isValidClass($nomCamp,$errors){

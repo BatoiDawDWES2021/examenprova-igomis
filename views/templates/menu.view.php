@@ -1,8 +1,11 @@
 <h2>Menu</h2>
 <ul>
-    <li><a href="index.php">Home</a></li>
-    <li><a href="generic.html">Ipsum veroeros</a></li>
-    <li><a href="generic.html">Tempus etiam</a></li>
-    <li><a href="generic.html">Consequat dolor</a></li>
-    <li><a href="elements.html">Elements</a></li>
+    <?php
+
+        foreach ($menu as $option):
+            if (Auth() == $option['auth']): ?>
+                <li><a href="<?= $option['link'] ?>"><?= $option['text'] ?></a></li>
+        <?php endif;
+            endforeach;
+         ?>
 </ul>

@@ -12,19 +12,19 @@
 			<div id="wrapper">
 				<!-- Header -->
 					<header id="header">
-                        <?php loadTemplate('templates/header'); ?>
+                        <?php loadTemplate('templates.header'); ?>
 					</header>
 				<!-- Menu -->
 					<nav id="menu">
-                        <?php loadTemplate('templates/menu',compact('menu')); ?>
+                        <?php loadTemplate('templates.menu',compact('menu')); ?>
 					</nav>
 				<!-- Main -->
 					<div id="main">
-                        <?php loadTemplate('templates/main',compact('albums')); ?>
+                        <?php loadTemplate('templates.main',compact('albums')); ?>
 					</div>
 				<!-- Footer -->
 					<footer id="footer">
-                        <?php loadTemplate('templates/footer',compact('lastMessage')); ?>
+                        <?php loadTemplate('templates.footer',compact('lastMessage')); ?>
 					</footer>
 			</div>
 		<!-- Scripts -->

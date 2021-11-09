@@ -41,14 +41,26 @@ class Album
 
     public function getArtistName(){
         // retorna el nom del Grup Musical
+        $query = require('../bootstrap.php');
+        return $query->findById('artist',$this->idArtist)->name;
+
     }
 
     public function getCompany(){
         // retorna el nom de la productora
+        $query = require('../bootstrap.php');
+        $idProductora = $query->findById('artist',$this->idArtist)->record_label_id;
+        return $query->findById('record_label',$idProductora)->name;
     }
 
     public static function Best(){
         // retorna un array amb tots el albums
+        $allAlbums = [];
+        $query = require('../bootstrap.php');
+        foreach ($query->selectAll('album',12) as $album){
+            $allAlbums[$album['id']] = new Album($album['name'],$album['votes'],$album['artist_id']);
+        }
+        return $allAlbums;
     }
 
 
